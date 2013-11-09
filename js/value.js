@@ -17,7 +17,7 @@ bestValue.Forms = {
 		var $form2 = $('#form-item-2');
 		bestValue.Forms.setupForm($form1);
 		bestValue.Forms.setupForm($form2);
-		bestValue.Forms.setupData($form1);
+		//bestValue.Forms.setupData($form1);
 	},
 
 	handleItemUpdate: function($this){
