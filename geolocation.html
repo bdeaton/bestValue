@@ -12,9 +12,9 @@
 
     // device APIs are available
     //
+   	alert(typeof(cordova));
     function onDeviceReady() {
     	alert('ready');
-    	alert(typeof(cordova));
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
 
