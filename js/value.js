@@ -250,7 +250,7 @@ bestValue.Forms = {
 };
 $(function() {
 	///console.clear();
-	alert('loaded');
+	//alert('loaded');
 	bestValue.Forms.init();
 });
 
