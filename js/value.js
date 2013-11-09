@@ -28,12 +28,12 @@ bestValue.Forms = {
 	},
 
 	updateData: function($this, $fieldset, $form){
-		//console.clear();
+		/////console.clear();
 		var formId = $form.attr('id');
 		var formData = bestValue.Forms.formData[formId];
 		
 		var $thisId = $this.attr('id');
-		console.log('$thisId: ' + $thisId);
+		///console.log('$thisId: ' + $thisId);
 		
 		$form.find('[data-update=true]').each(function(){
 			var $this = $(this);
@@ -46,8 +46,8 @@ bestValue.Forms = {
 			
 			
 			
-			console.log('keyName: ' + keyName);
-			console.log(keyName + ': ' + keyVal);
+			///console.log('keyName: ' + keyName);
+			///console.log(keyName + ': ' + keyVal);
 			
 			if(keyName=='discount1Val'){
 				var $discount1Key = 'discount1Type';
@@ -60,7 +60,7 @@ bestValue.Forms = {
 					var discount1Type = 'percent';
 					var price = formData['price'];
 					var discount1Amount = ((Number(keyVal) / 100) * price).toFixed(2);
-					console.log('discount1Amount: ' + discount1Amount);
+					///console.log('discount1Amount: ' + discount1Amount);
 				}
 				var $percentValue = $form.find('.item-discout-type-1 .percent-value span');
 				$percentValue.text(discount1Amount);
@@ -79,7 +79,7 @@ bestValue.Forms = {
 					var discount2Type = 'percent';
 					var price = formData['price'];
 					var discount2Amount = ((Number(keyVal) / 100) * price).toFixed(2);
-					console.log('discount2Amount: ' + discount2Amount);
+					///console.log('discount2Amount: ' + discount2Amount);
 				}
 				var $percentValue = $form.find('.item-discout-type-2 .percent-value span');
 				$percentValue.text(discount2Amount);
@@ -98,7 +98,7 @@ bestValue.Forms = {
 					var discount3Type = 'percent';
 					var price = formData['price'];
 					var discount3Amount = ((Number(keyVal) / 100) * price).toFixed(2);
-					console.log('discount3Amount: ' + discount3Amount);
+					///console.log('discount3Amount: ' + discount3Amount);
 				}
 				var $percentValue = $form.find('.item-discout-type-3 .percent-value span');
 				$percentValue.text(discount3Amount);
@@ -107,10 +107,10 @@ bestValue.Forms = {
 				formData['discount3Val'] = Number(formData['discount3Val']);
 			}
 			
-			console.log(' ');
+			///console.log(' ');
 		});
 
-		console.log(formData);
+		///console.log(formData);
 		bestValue.Forms.calculatePrice($form);
 	},
 
@@ -131,8 +131,8 @@ bestValue.Forms = {
 		var formId = $form.attr('id');
 		var oData = bestValue.Forms.formData;
 		var formData = oData[formId];
-		console.log(' ');
-		console.log('updatePercentageDiscount');
+		///console.log(' ');
+		///console.log('updatePercentageDiscount');
 		
 		formData['totalDiscounts'] = 0;
 		formData['totalFixedDiscounts'] = 0;
@@ -166,28 +166,28 @@ bestValue.Forms = {
 		var formId = $form.attr('id');
 		var oData = bestValue.Forms.formData;
 		var formData = oData[formId];
-		console.log(' ');
-		console.log('calculatePrice');
+		///console.log(' ');
+		///console.log('calculatePrice');
 		
 		var itemPrice = formData['price'];
 		var updatedPrice = bestValue.Forms.calculateDiscount(formData);
-		console.log('calculatePrice updatedPrice: ' + updatedPrice.toFixed(2));
+		///console.log('calculatePrice updatedPrice: ' + updatedPrice.toFixed(2));
 		$form.find('.input-item-price-net').val('$' + updatedPrice.toFixed(2));
 		var size = formData['sizeVal'];
 		
 		if(size>0){
-			console.log('GET PER');	
+			///console.log('GET PER');	
 			var calculatePricePer = bestValue.Forms.calculatePricePer($form, updatedPrice, size);
 			$form.find('.input-item-unit-price').val('$' + calculatePricePer.toFixed(5));
 		}
 		
-		console.log('itemPrice: ' + itemPrice);
-		console.log('size: ' + size);
+		///console.log('itemPrice: ' + itemPrice);
+		///console.log('size: ' + size);
 		return updatedPrice;
 	},
 
 	calculateDiscount: function(formData){
-		console.log('||| calculateDiscount');
+		///console.log('||| calculateDiscount');
 		var itemPrice = formData['price'];
 		var updatedPrice = itemPrice;
 		if(formData['discount1Type']=='fixed'){
@@ -201,29 +201,29 @@ bestValue.Forms = {
 		}
 		if(formData['discount1Type']=='percent'){
 			var discount1Calc = (updatedPrice * (formData['discount1Amount'] / 100));
-			console.log('discount1Calc: ' + discount1Calc);
+			///console.log('discount1Calc: ' + discount1Calc);
 			updatedPrice = updatedPrice - discount1Calc;
 		}
 		if(formData['discount2Type']=='percent'){
 			var discount2Calc = (updatedPrice * (formData['discount2Amount'] / 100));
-			console.log('discount2Calc: ' + discount2Calc);
+			///console.log('discount2Calc: ' + discount2Calc);
 			updatedPrice = updatedPrice - discount2Calc;
 		}
 		if(formData['discount3Type']=='percent'){
 			var discount3Calc = (updatedPrice * (formData['discount3Amount'] / 100));
-			console.log('discount3Calc: ' + discount3Calc);
+			///console.log('discount3Calc: ' + discount3Calc);
 			updatedPrice = updatedPrice - discount3Calc;
 		}
 		
-		console.log('originalPrice: ' + itemPrice);
-		console.log('updatedPrice: ' + updatedPrice);
+		///console.log('originalPrice: ' + itemPrice);
+		///console.log('updatedPrice: ' + updatedPrice);
 		return updatedPrice;
 	},
 
 	calculatePricePer: function($form, updatedPrice, size){
-		console.log('calculatePricePer ');
-		console.log('updatedPrice: ' + updatedPrice);
-		console.log('size: ' + size);
+		///console.log('calculatePricePer ');
+		///console.log('updatedPrice: ' + updatedPrice);
+		///console.log('size: ' + size);
 		return updatedPrice / size;
 	},
 
@@ -249,7 +249,8 @@ bestValue.Forms = {
 
 };
 $(function() {
-	console.clear();
+	///console.clear();
+	alert('loaded');
 	bestValue.Forms.init();
 });
 
